@@ -1,0 +1,89 @@
+<div class="panel col-md-4">
+<p-panel class="panel" [style]="{'margin-bottom':'0px'}"  >
+<form [formGroup]="loginForm">
+  <div class="middle-login">
+      <p-steps [model]="items"></p-steps>
+    <div *ngIf="loginpg">
+      <h2>Login</h2>
+      <div>
+        <label for="username">UserName: </label>
+      </div>
+      <!-- <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">-->
+        <div class="ui-inputgroup"> 
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+          <input type="text" pInputText placeholder="Username" formControlName="username"
+            [ngClass]="{'is-invalid': (submitted || loginForm.controls['username'].touched || loginForm.controls['username'].dirty) && loginForm.controls['username'].errors}">
+          <div
+            *ngIf="(submitted || loginForm.controls['username'].touched || loginForm.controls['username'].dirty) && loginForm.controls['username'].errors"
+            class="invalid-feedback text-left">
+            <div *ngIf="loginForm.controls['username'].errors?.required">Username is required</div>
+          <!-- </div>
+        </div>-->
+      </div> 
+      </div><br>
+      <div>
+        <label for="password">Password: </label>
+      </div>
+      <input type="password" pPassword [(ngModel)]="mediumLabel"/><br><br>
+      <!-- <button (click)="next('login')">Next</button> -->
+      <button pButton type="button" label="Click" (click)="next('userdetail')"></button>
+      <!-- <button pButton type="button" label="Click" (click)="save()"></button> -->
+    </div>
+
+    <div *ngIf="userdetail">
+      <h2>UserDetail</h2>
+      <div>
+        <label for="emailid">Email Id: </label>
+      </div>
+      <div class="ui-inputgroup"> 
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+          <input type="email" pInputText placeholder="Email ID" formControlName="emailid" 
+          [ngClass]="{'is-invalid': (submitted || loginForm.controls['emailid'].touched || loginForm.controls['emailid'].dirty) && loginForm.controls['emailid'].errors}">
+          <div
+            *ngIf="(submitted || loginForm.controls['emailid'].touched || loginForm.controls['emailid'].dirty) && loginForm.controls['emailid'].errors"
+            class="invalid-feedback text-left">
+            <div *ngIf="loginForm.controls['emailid'].errors?.required">Email ID is required</div>
+        </div>
+      </div><br>
+      <div>
+        <label for="phonenum">Phone Number: </label>
+      </div>
+      <div class="ui-inputgroup"> 
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+          <input type="phonenum" pInputText placeholder="Phone Number" formControlName="phonenum"
+          [ngClass]="{'is-invalid': (submitted || loginForm.controls['phonenum'].touched || loginForm.controls['phonenum'].dirty) && loginForm.controls['emailid'].errors}">
+          <div
+            *ngIf="(submitted || loginForm.controls['phonenum'].touched || loginForm.controls['phonenum'].dirty) && loginForm.controls['phonenum'].errors"
+            class="invalid-feedback text-left">
+            <div *ngIf="loginForm.controls['phonenum'].errors?.required">Phone Number is required</div>
+        </div>
+      </div><br><br>
+
+      <button pButton type="button" label="Click" (click)="next('question')"></button>
+    </div>
+
+
+    <div *ngIf="question">
+      <h2>Questionary</h2>
+      <div>
+        <label for="currentcity">Which is your current city?: </label>
+      </div>
+      <div class="ui-inputgroup"> 
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+          <input type="text" pInputText placeholder="Current City" formControlName="city">
+      </div>
+      <div>
+        <label for="friendname">Name of your best friend?: </label>
+      </div>
+      <div class="ui-inputgroup"> 
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+          <input type="text" pInputText placeholder="Friend Name" formControlName="friend">
+      </div>
+      <button pButton type="button" label="Click" (click)="next('login')"></button>
+    </div>
+
+  </div>
+</form>
+</p-panel>
+</div>

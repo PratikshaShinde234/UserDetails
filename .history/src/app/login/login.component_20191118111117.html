@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm">
+  <div class="middle-login">
+    <h2>Login</h2>
+    <div>
+      <label for="username">UserName: </label>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+        <input type="text" pInputText placeholder="Username"
+          [ngClass]="{'is-invalid': (submitted || loginForm.controls.username.touched || loginForm.controls.username.dirty) && loginForm.controls.username.errors}">
+        <div
+          *ngIf="(submitted || loginForm.controls.username.touched || loginForm.controls.username.dirty) && loginForm.controls.username.errors"
+          class="invalid-feedback text-left">
+          <div *ngIf="loginForm.controls.username.errors?.required">Username is required</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="password">Password: </label>
+    </div>
+    <div>
+      <input type="password" formControlName="password">
+    </div>
+    <!-- <button (click)="next('login')">Next</button> -->
+    <button (click)="save()">Next</button>
+  </div>
+</form>
